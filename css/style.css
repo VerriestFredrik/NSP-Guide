@@ -1,0 +1,30 @@
+body {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Lato', sans-serif;
+}
+h1 {
+  font-size: 2.4rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+p, a {
+  font-size: 1.2rem
+}
+
+.term {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-style: italic;
+}
+
+.warning {
+  color: white;
+  background-color: #f44336;
+  padding: 16px;
+  border-radius: 3px;
+}

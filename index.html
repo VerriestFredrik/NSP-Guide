@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Let me be your guide young one...</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
@@ -37,6 +39,21 @@
       <h2>Scanning</h2>
       <p class="subtitle">Everything related to the scanning of a target network and finding devices connected to it, including the services running on those decives.
       In this phase you learn more about the machines running on the targeted network and how you might attack them.</p>
+
+      <p>Most common tool used is NMAP, though sometimes you might not have access to NMAP so have your own ping sweep tools! Below are some example commands.</p>
+      <ul>
+        <li>Windows: FOR /l %x in (1, 1, 254) DO ping -n 1 -w 100 172.10.10.%x | findstr /I Reply >> C:\IPList.txt</li>
+        <li><!-- TODO: Add linux command --></li>
+      </ul>
+      <p>With the <span class="term">Time to live (TTL)</span> you can guess what operating system might be running on the device.</p>
+      <p class="warning">Keep in mind this can be changed so this might not always be true!</p>
+
+      <ul>
+        <li>Windows standard TTL: 128</li>
+        <li>Linux standard TTL: 64</li>
+        <li>FreeBSD standard TTL: 255</li>
+      </ul>
+
     </article>
     <article id="enumeration">
       <h2>Enumeration</h2>
