@@ -47,3 +47,8 @@ p, a {
 ul.nodots {
   list-style: none;
 }
+
+article {
+  padding-bottom: 2rem;
+  border-bottom: #444 solid 2px;
+}
