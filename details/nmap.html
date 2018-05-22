@@ -22,7 +22,7 @@
       <div class="code">
         # Here we do a simple scan of a network from IP 172.10.10.1 to 172.10.10.100...
 
-        nmap -sn 172.10.10.1 172.10.10.100
+        nmap -sn -n 172.10.10.1 172.10.10.100
             -sn is used for simple ping scans, where no ports are scanned
             -n is used to prevent reverse lookup, which makes the scan a lot faster
       </div>
@@ -42,7 +42,15 @@
 
         # If the service would be unknown you can use banner grabbing to find out...
 
-        nmap -n -p25252 172.10.10.10 -sV       # This scans 172.10.10.10:2525 and tries to find out what service is running on it...
+        nmap -n -sV -p25252 172.10.10.10    # This scans 172.10.10.10:2525 and tries to find out what service is running on it...
+      </div>
+
+      <div class="code">
+          # Scanning UDP ports is a little trickier...
+          nmap -n -sU -p161,62534 --open 172.10.10.10
+
+          # -sU is to scan UDP (Which takes longer so scan specific ports!)
+          # -p161,62534 scans only port 161 & 62534(A random port which is unlikely to be open. This is to make use that you don't get a false positive)
       </div>
     </article>
   </main>

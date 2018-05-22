@@ -78,13 +78,38 @@
       <p>In enumeration the DNS server (if the network has one) is often the most interesting target as it knows about 
         all the other servers running on the network. Therefore it's handy to do a DNS zone transfer. 
       </p>
+      <h3>DNS</h3>
       <div class="code">
         # Doing a DNS zone transfer with the help of the tool 'dig'...
         dig axfr @10.0.0.3 fantastig.lan
-        
+
         # 'axfr' means you want a zone transfer
         # @10.0.0.3 is the target
         # fantastig.lan is the zone you want to transfer
+      </div>
+
+      <h3>SNMP</h3>
+      <div class="code">
+        # A simple example of how to use the snmp-check tool... (This only check known counters!)
+        snmp-check 10.0.0.5 | less
+
+        # A lot of useful info can be found with this like: user accounts, network info,...
+      </div>
+
+      <div class="code">
+        # If you want to see all counters then use this instead...
+        snmpbulkwalk -v2c -cpublic 10.0.0.17 1 | grep "password,admin,FLG"
+
+        # This wil give ALL counters, which is a lot of data so use grep!
+        # Make sure you get the version right! thats what the -v2c is for.
+      </div>
+
+      <h3>SMTP</h3>
+      <div class="code">
+        # Example of how to use telnet to enumerate SMTP
+        telnet mail.fantastig.lan 25
+        
+        # Don't forget to add the 25 at the end to make sure you connect to port 25 (SMTP)
       </div>
     </article>
     <article id="exploitation">
