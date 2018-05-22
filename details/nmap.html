@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Details - NMAP</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>NMAP</h1>
+  </header>
+
+  <main>
+    <article>
+      <h2>Nmap is a scanning tool used to identify weaknesses in a network and learn more about the devies on it...</h2>
+      <p>It works with both <span class="term">TCP & UDP</span> to scan a network but will stick to only TCP as it's more reliable and faster. It only uses UDP when you tell it to which will be shown in an example below.</p>
+      <h2>Examples:</h2>
+      <div class="code">
+        # Here we do a simple scan of a network from IP 172.10.10.1 to 172.10.10.100...
+
+        nmap -sn 172.10.10.1 172.10.10.100
+            -sn is used for simple ping scans, where no ports are scanned
+            -n is used to prevent reverse lookup, which makes the scan a lot faster
+      </div>
+
+      <div class="code">
+        # To detect OS use the OS fingerprinting option ( -O )...
+
+        nmap -n -O 172.10.10.10
+      </div>
+      <p class="warning">This is not always correct sometimes NMAP guesses, keep this in mind and use common sence!</p>
+
+      <div class="code">
+        # Scanning all ports on a machine can be interesting if services are running on non-standard ports!
+        # (It's best you do this on a single machine, as otherwise your scan will be slow!)
+
+        nmap -n -p- 172.10.10.10
+
+        # If the service would be unknown you can use banner grabbing to find out...
+
+        nmap -n -p25252 172.10.10.10 -sV       # This scans 172.10.10.10:2525 and tries to find out what service is running on it...
+      </div>
+    </article>
+  </main>
+</body>
+</html>

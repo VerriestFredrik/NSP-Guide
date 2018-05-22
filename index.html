@@ -34,13 +34,14 @@
       <h2>Reconnaissance</h2>
       <p class="subtitle">Everything to learing more about a target, both passive recon (legal) & active recon (illegal).
         In this phase you learn more about your target and possible attack vectors.</p>
+      <p>The best tools in the field for this are Maltego (Best for people & organisations) & Recon-ng (Best for organisations)</p>
     </article>
     <article id="scanning">
       <h2>Scanning</h2>
       <p class="subtitle">Everything related to the scanning of a target network and finding devices connected to it, including the services running on those decives.
       In this phase you learn more about the machines running on the targeted network and how you might attack them.</p>
 
-      <p>Most common tool used is NMAP, though sometimes you might not have access to NMAP so have your own ping sweep tools! Below are some example commands.</p>
+      <p>Most common tool used is <a href="details/nmap.html" target="_blank">NMAP</a>, though sometimes you might not have access to NMAP so have your own ping sweep tools! Below are some example commands.</p>
       <ul>
         <li>Windows: FOR /l %x in (1, 1, 254) DO ping -n 1 -w 100 172.10.10.%x | findstr /I Reply >> C:\IPList.txt</li>
         <li><!-- TODO: Add linux command --></li>
@@ -54,10 +55,33 @@
         <li>FreeBSD standard TTL: 255</li>
       </ul>
 
+      <ul class="nodots">
+          <li>Interesting ports: (Connecting to these is done during enumeration)</li>
+          <li>20: FTP Data</li>
+          <li>21: FTP</li>
+          <li>22: SSH</li>
+          <li>23: Telnet</li>
+          <li>25: SMTP</li>
+          <li>80: HTTP</li>
+          <li>443: HTTPS</li>
+          <li>3389: ms-wbt-server (Remote Desktop)</li>
+        </ul>
+  
+        <p>During this phase you want to document the <span class="term">OS</span> (older versions are interesting), <span class="term">port numbers</span>
+          (and the protocols that run on them) and <span class="term">IP + MAC</span> addresses.</p>
+
     </article>
     <article id="enumeration">
       <h2>Enumeration</h2>
       <p class="subtitle">Here you'll use actual correct protocols to get data out of your potential targets.</p>
+
+      <p>In enumeration the DNS server (if the network has one) is often the most interesting target as it knows about 
+        all the other servers running on the network. Therefore it's handy to do a DNS zone transfer. 
+      </p>
+      <div class="code">
+        # Doing a DNS zone transfer with the help of the tool 'dig'...
+        dig axfr @10.0.0.3 fantastig.lan
+      </div>
     </article>
     <article id="exploitation">
       <h2>Exploitation</h2>
@@ -66,15 +90,21 @@
     </article>
     <article id="sniffing">
       <h2>Sniffing</h2>
+      <p class="subtitle">Sniffing is the practice of listening to traffic on the network and making it route trough
+        you machine. This can be very useful for getting info like passwords,... . Any sniffing/wiretapping is a criminal
+        offence!
+      </p>
     </article>
     <article id="password">
       <h2>Password, hashes & cracking</h2>
+      <p class="subtitle">In this phase you need to make a passwordlist and use it on a service/server.</p>
     </article>
     <article id="wireless">
       <h2>Wireless encryption & cracking</h2>
     </article>
     <article id="pivoting">
       <h2>Pivoting</h2>
+      <p class="subtitle">In this phase you have p'wnd a machine on the network. <!-- TODO: complete --></p>
     </article>
   </main>
 </body>
